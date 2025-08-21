@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 from urllib.parse import quote
 import os
 from flask_cors import CORS
+from extensions import db
 
 SECRET_KEY = os.getenv("SECRET_KEY")
 
@@ -30,22 +31,21 @@ encoded_password = quote(DB_PASS)
 # Update the SQLALCHEMY_DATABASE_URI to include the port
 app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+pymysql://{DB_USER}:{encoded_password}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db.init_app(app)
 
-db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
 
-# Import User model here (after db initialization)
-from models import User
-
 @login_manager.user_loader
 def load_user(user_id):
+    from models import User
     return User.query.get(int(user_id))
 
 
 @app.route('/signup', methods=['POST'])
 def signup():
+    from models import User
     data = request.get_json()
     username = data.get('username')
     password = data.get('password')
@@ -59,6 +59,7 @@ def signup():
 
 @app.route('/login', methods=['POST'])
 def login():
+    from models import User
     data = request.get_json()
     username = data.get('username')
     password = data.get('password')
@@ -83,4 +84,4 @@ def dashboard():
     return f"Welcome, {current_user.username}!"
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, port=5000)

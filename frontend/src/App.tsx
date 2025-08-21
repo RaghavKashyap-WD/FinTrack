@@ -1,7 +1,7 @@
 import { Eye, EyeClosed } from "lucide-react"
 import { useState } from "react"
 
-const API_URL = "http://localhost:3000" // Update if your backend uses a different URL
+const API_URL = "http://localhost:5000" // Update if your backend uses a different URL
 
 const App = () => {
   const [isLoginMode, setIsLoginMode] = useState(false) // false=signup, true=login
