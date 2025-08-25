@@ -26,12 +26,14 @@ FinTrack is a modern, user-friendly finance tracking application designed to hel
 ## 🛠️ Tech Stack
 
 ### Backend
+
 - **Flask** - Python web framework for robust API development
 - **MySQL** - Reliable relational database for data persistence
 - **SQLAlchemy** - Python SQL toolkit and ORM
 - **JWT** - Secure token-based authentication
 
 ### Frontend
+
 - **Next.js** - React framework for production-ready applications
 - **React** - Component-based UI library
 - **Tailwind CSS** - Utility-first CSS framework
@@ -51,71 +53,71 @@ FinTrack is a modern, user-friendly finance tracking application designed to hel
 ### Backend Setup (Flask + MySQL)
 
 1. **Clone the repository**
-   ```bash
-   git clone https://github.com/RaghavKashyap-WD/FinTrack.git
-   cd FinTrack
-   ```
+```bash
+git clone https://github.com/RaghavKashyap-WD/FinTrack.git
+cd FinTrack
+```
 
 2. **Set up virtual environment**
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
 
 3. **Install Python dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
+```bash
+pip install -r requirements.txt
+```
 
 4. **Configure MySQL database**
-   ```sql
-   # Create database
-   mysql -u root -p
-   CREATE DATABASE fintrack;
-   exit
-   ```
+```sql
+# Create database
+mysql -u root -p
+CREATE DATABASE fintrack;
+exit
+```
 
 5. **Set up environment variables**
-   ```bash
-   cp .env.example .env
-   # Edit .env file with your database credentials
-   ```
+```bash
+cp .env.example .env
+# Edit .env file with your database credentials
+```
 
 6. **Run database migrations**
-   ```bash
-   flask db upgrade
-   ```
+```bash
+flask db upgrade
+```
 
 7. **Start the Flask server**
-   ```bash
-   python app.py
-   ```
+```bash
+python app.py
+```
 
 ### Frontend Setup (Next.js)
 
 1. **Navigate to frontend directory**
-   ```bash
-   cd frontend
-   ```
+```bash
+cd frontend
+```
 
 2. **Install dependencies**
-   ```bash
-   npm install
-   ```
+```bash
+npm install
+```
 
 3. **Set up environment variables**
-   ```bash
-   cp .env.local.example .env.local
-   # Edit .env.local with your API endpoints
-   ```
+```bash
+cp .env.local.example .env.local
+# Edit .env.local with your API endpoints
+```
 
 4. **Start the development server**
-   ```bash
-   npm run dev
-   ```
+```bash
+npm run dev
+```
 
 5. **Open your browser**
-   Navigate to `http://localhost:3000`
+   Navigate to http://localhost:3000
 
 ---
 
@@ -142,16 +144,13 @@ We welcome contributions from the community! Here's how you can help:
 5. **Open a Pull Request**
 
 ### Contribution Guidelines
+
 - Follow the existing code style
 - Write clear commit messages
 - Add tests for new features
 - Update documentation as needed
 
----
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+**Important Notice:** By contributing, you agree that your contributions may be used in future commercial, closed-source, or paid versions of this project by the repository owner, with or without credit. If you do not agree, please do not submit your code.
 
 ---
 
