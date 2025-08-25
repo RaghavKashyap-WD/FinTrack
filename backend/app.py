@@ -11,8 +11,8 @@ from extensions import db
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 app = Flask(__name__)
+CORS(app, origins=["http://localhost:3001"], supports_credentials=True)
 app.secret_key = SECRET_KEY 
-CORS(app)
 
 
 # Load environment variables from .env file
@@ -33,9 +33,20 @@ app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+pymysql://{DB_USER}:{encoded_pas
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 
+
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
+login_manager.init_app(app)
 login_manager.login_view = 'login'
+@login_manager.unauthorized_handler
+def unauthorized_callback():
+    if request.accept_mimetypes.accept_html:
+        # Request expects HTML → redirect
+        return redirect(url_for('login'))
+    # Otherwise, it's an API call → JSON 401
+    return jsonify({'error': 'Unauthorized'}), 401
+
+
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -55,10 +66,14 @@ def signup():
     new_user = User(username=username, password=hashed_pw)
     db.session.add(new_user)
     db.session.commit()
+    login_user(new_user)
     return jsonify({'success': True, 'message': 'Signup successful!'}), 201
 
-@app.route('/login', methods=['POST'])
+@app.route('/login', methods=['POST', 'GET'])
 def login():
+    if request.method == 'GET':
+        return redirect("http://localhost:3001/login")
+
     from models import User
     data = request.get_json()
     username = data.get('username')
