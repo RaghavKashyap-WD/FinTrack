@@ -42,6 +42,7 @@ FinTrack is a modern, user-friendly finance tracking application designed to hel
 ## 🚀 Getting Started
 
 ### Prerequisites
+
 - Node.js (v16 or higher)
 - Python (v3.8 or higher)
 - MySQL Server
@@ -67,7 +68,7 @@ FinTrack is a modern, user-friendly finance tracking application designed to hel
    ```
 
 4. **Configure MySQL database**
-   ```bash
+   ```sql
    # Create database
    mysql -u root -p
    CREATE DATABASE fintrack;
@@ -157,7 +158,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Support
 
 If you have any questions or need help:
-- 📧 Email: support@fintrack.com
+
+- 📧 Email: kshypraghav@gmail.com
 - 🐛 Issues: [GitHub Issues](https://github.com/RaghavKashyap-WD/FinTrack/issues)
 - 💬 Discussions: [GitHub Discussions](https://github.com/RaghavKashyap-WD/FinTrack/discussions)
 
